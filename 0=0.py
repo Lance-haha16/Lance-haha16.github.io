@@ -1,3 +1,5 @@
+pyinstaller --onefile --windowed translator_gui.py
+
 import tkinter as tk
 from translate import Translator
 
