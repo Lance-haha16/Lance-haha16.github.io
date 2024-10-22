@@ -1,17 +1,20 @@
-import requests
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\models.py", line 974, in json
+    return complexjson.loads(self.text, **kwargs)
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
 
-url = "https://api.bilibili.com/x/web-interface/wbi/search/type?category_id=&search_type=video&ad_resource=5654&__refresh__=true&_extra=&context=&page=4&page_size=42&pubtime_begin_s=0&pubtime_end_s=0&from_source=&from_spmid=333.337&platform=pc&highlight=1&single_column=0&keyword=%E7%94%9C%E5%A6%B9&qv_id=kvbG83fbqq4uKpWKsN14yx9xHBZy4yvU&source_tag=3&gaia_vtoken=&dynamic_offset=90&web_location=1430654&w_rid=a1b9b32d5180ea76075ba7b4d30f8409&wts=1729595934"
+During handling of the above exception, another exception occurred:
 
-try:
-    response = requests.get(url)
-    response.raise_for_status()  # 检查请求是否成功
-    data = response.json().get('data', {}).get('result', [])
-    
-    if data:
-        for info in data:
-            print(info)
-    else:
-        print("未找到结果。")
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\Desktop\新建文件夹\demo1.py", line 7, in <module>
+    data=response.json()['data']['result']
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\models.py", line 978, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
 
-except requests.exceptions.RequestException as e:
-    print(f"发生错误: {e}")
